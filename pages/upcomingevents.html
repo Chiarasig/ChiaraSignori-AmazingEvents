@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upcoming Amazing Events</title>
+    <link
+      rel="shortcut icon"
+      href="../images/faviconmazingevents.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav style="min-height: 10vh"
+      class="navbar navbar-expand-lg bg-black d-flex gap-5 align-items-center justify-content-evenly"
+    >
+      <figure class="ms-5 pt-3">
+        <img
+          src="../images/image.png"
+          alt="logosmazingevents"
+          width="100"
+          height="24"
+        />
+      </figure>
+      <div>
+        <button
+          class="navbar-toggler bg-white"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse nav-pills"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mb-2">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active bg-white text-black" href="#"
+                >Upcoming Events</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="./pastevents.html"
+                >Past Events</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="./contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="./stats.html">Stats</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../images/museos.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1 class="H1_Carrousel">Up Coming Events</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../images/MARATON-INTERNACIONAL.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="H1_Carrousel">Up Coming Events</h1>
+        </div>
+        <div class="carousel-item">
+          <img src="../images/Tomorrowland2022.2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="H1_Carrousel">Up Coming Events</h1>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <main style="min-height: 80vh">
+      <form class="ps-5 pt-3 d-flex gap-3 flex-wrap">
+        <label class="pt-1">
+          <input type="checkbox" name="Category" value="Category" /> Category
+        </label>
+        <label class="pt-1">
+          <input type="checkbox" name="Category" value="Category" /> Category
+        </label>
+        <label class="pt-1">
+          <input type="checkbox" name="Category" value="Category" /> Category
+        </label>
+        <label class="pt-1">
+          <input type="checkbox" name="Category" value="Category" /> Category
+        </label>
+        <label class="pt-1">
+          <input type="checkbox" name="Category" value="Category" /> Category
+        </label>
+        <form class="">
+          <input
+            class="me-2 form-control w-50"
+            type="search"
+            aria-label="Search"
+          />
+          <button class="btn border border-secondary p-0" type="button">
+            <img
+              src="../images/iconobusqueda.jpg"
+              height="100%"
+              width="40"
+              class="rounded"
+            />
+          </button>
+        </form>
+      </form>
+      <div id="containerCardsUp" class="d-flex flex-wrap gap-4 justify-content-center pt-4 pb-4">
+<!--         <article class="card" style="width: 25rem">
+          <img
+            src="../images/cine7.jpg"
+            class="card-img-top p-2"
+            alt="Cinema"
+            height="60%"
+          />
+          <h5 class="card-title text-center">Cinema</h5>
+          <p class="card-text text-center">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <div class="d-flex justify-content-evenly">
+            <p>Precio US$</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </article>
+        <article class="card" style="width: 25rem">
+          <img
+            src="../images/fiestadedisfraces1.jpg"
+            class="card-img-top p-2"
+            alt="Party"
+            height="60%"
+          />
+          <h5 class="card-title text-center">Party</h5>
+          <p class="card-text text-center">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <div class="d-flex justify-content-evenly">
+            <p>Precio US$</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </article>
+        <article class="card" style="width: 25rem">
+          <img
+            src="../images/salidaalmuseo5.jpg"
+            class="card-img-top p-2"
+            alt="Museum"
+            height="60%"
+          />
+          <h5 class="card-title text-center">Cinema</h5>
+          <p class="card-text text-center">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content..
+          </p>
+          <div class="d-flex justify-content-evenly">
+            <p>Precio US$</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </article>
+        <article class="card" style="width: 25rem">
+          <img
+            src="../images/feriadecomidas7.jpg"
+            class="card-img-top p-2"
+            alt="Footer"
+            height="60%"
+          />
+          <h5 class="card-title text-center">Food fair</h5>
+          <p class="card-text text-center">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content..
+          </p>
+          <div class="d-flex justify-content-evenly">
+            <p>Precio US$</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </article>
+        <article class="card" style="width: 25rem">
+          <img
+            src="../images/conciertodemusica1.jpg"
+            class="card-img-top p-2"
+            alt="Music"
+            height="60%"
+          />
+          <h5 class="card-title text-center">Music concert</h5>
+          <p class="card-text text-center">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content..
+          </p>
+          <div class="d-flex justify-content-evenly">
+            <p>Precio US$</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </article>
+        <article class="card" style="width: 25rem">
+          <img
+            src="../images/maraton3.jpg"
+            class="card-img-top p-2"
+            alt="Marathon"
+            height="60%"
+          />
+          <h5 class="card-title text-center">Marathon</h5>
+          <p class="card-text text-center">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content..
+          </p>
+          <div class="d-flex justify-content-evenly">
+            <p>Precio US$</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </article> -->
+      </div>
+    </main>
+    <footer class="bg-black p-1" style="min-height: 10vh">
+      <div class="d-flex justify-content-between">
+        <figure class="d-flex align-items-center gap-3 pt-2 ps-5">
+          <img
+            src="../images/logowhats.png"
+            alt="Whatsapp"
+            width="45"
+            height="35"
+          />
+          <img
+            src="../images/logoinsta.png"
+            alt="Instagram"
+            width="45"
+            height="35"
+          />
+          <img
+            src="../images/logofacebook.png"
+            alt="Facebook"
+            width="45"
+            height="35"
+          />
+        </figure>
+        <h2 class="d-flex pe-5 text-white align-items-center">Cohort</h2>
+      </div>
+    </footer>
+    
+    <script src="../scripts/data.js"></script>
+    <script src="../scripts/upcomingevents.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
