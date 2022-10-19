@@ -1,27 +1,62 @@
-console.log(data);
-let containerCards = document.getElementById("containerCardsUp")
-console.log(containerCards);
-for (let event of data.events){
-    if (event.date > data.ocurrentevents){
-
-    let card = document.createElement("article")
-    card.classname = "card" 
-    card.style = "width: 25rem"
-    card.innerHTML =
+let containerCards = document.getElementById("containerCards")
+function printCard (array, container){
+  array.forEach(evento =>{
+    if (evento.date > data.currentevents)
+    container.innerHTML += 
     `
-    <img
-    src="${event.image}"
-    class="card-img-top p-2"
-    alt="${event.name}"
-    height="60%"
-  />
-  <h5 class="card-title text-center">${event.name}</h5>
-  <p class="card-text text-center">${event.description}</p>
-  <div class="d-flex justify-content-evenly">
-  <p>Precio US$ ${event.price}</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  `
-    containerCards.appendChild(card)
+    <article class="card" style="width: 25rem">
+            <img
+              src=${evento.image}
+              class="card-img-top p-2"
+              alt=${evento.name}
+              height="60%"
+            />
+            <h5 class="card-title text-center fst-italic">${evento.name}</h5>
+            <p class="card-text text-center">${evento.description}</p>
+            <div class="d-flex justify-content-evenly">
+              <p class="fst-italic">Precio US$ ${evento.price}</p>
+              <a href="../pages/details.html?id=${evento._id}" class="btn btn-danger">Details</a>
+            </div>
+          </article>
+    `
+  })
 }
-}
+printCard (data.events, containerCards)
+
+let search = document.getElementById("inputSearch");
+search.addEventListener("keyup", cambiosDelEvento => {
+  let inputUser = cambiosDelEvento.target.value
+  let filtro = data.events.filter((objetoEvento) =>
+  objetoEvento.name.toLowerCase().includes(inputUser.toLowerCase()));
+  containerCards.innerHTML ="";
+  printCard(filtro, containerCards); 
+});
+let categorias = document.getElementById("boxes");
+
+let checkbox = new Set(data.events.map((evento) => evento.category));
+
+checkbox = [...checkbox]
+
+checkbox.forEach((nombreCategoria) => {
+  categorias.innerHTML += 
+   ` <div class="form-check">
+        <input class="form-check-input" id="${nombreCategoria}" type="checkbox">
+        <label class="form-check-label">${nombreCategoria}</label>
+    </div>`
+    ;
+    console.log(checkbox)
+});
+let listCheck = []
+categorias.addEventListener("click", e=>{
+  if(e.target.checked){
+    listCheck = listCheck.concat(data.events.filter(evento=> evento.category.toLowerCase().includes(e.target.id.toLowerCase())))
+    console.log(listCheck);
+    containerCards.innerHTML = ''
+    printCard(listCheck,containerCards )}
+  else if(!e.target.checked){
+    console.log('else if')
+      listCheck = listCheck.filter(evento => !evento.category.toLowerCase().includes( e.target.id.toLowerCase() ) )
+      containerCards.innerHTML = ''
+      printCard(listCheck, containerCards)}
+  if (listCheck.length === 0){
+      printCard(data.events,containerCards)}})
