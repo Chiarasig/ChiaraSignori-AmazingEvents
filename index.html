@@ -103,143 +103,18 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-  
     <main style="min-height: 80vh">
-      <form class="ps-5 pt-3 d-flex gap-3 flex-wrap">
-        <label class="pt-1">
-          <input type="checkbox" name="Category" value="Category" /> Category
-        </label>
-        <label class="pt-1">
-          <input type="checkbox" name="Category" value="Category" /> Category
-        </label>
-        <label class="pt-1">
-          <input type="checkbox" name="Category" value="Category" /> Category
-        </label>
-        <label class="pt-1">
-          <input type="checkbox" name="Category" value="Category" /> Category
-        </label>
-        <label class="pt-1">
-          <input type="checkbox" name="Category" value="Category" /> Category
-        </label>
-        <form class="">
-          <input
-            class="me-2 form-control w-50"
+      <div class="d-flex">
+        <div class="ps-5 pt-3 d-flex gap-3 flex-wrap" id="boxes"></div>
+        <form class="d-flex flex-wrap">
+          <input id="inputSearch"
+            class="mt-2 ms-5 form-control "
             type="search"
             aria-label="Search"
           />
-          <button class="btn border border-secondary p-0" type="button">
-            <img
-              src="./images/iconobusqueda.jpg"
-              height="100%"
-              width="40"
-              class="rounded"
-            />
-          </button>
         </form>
-      </form>
+      </div>
       <div id="containerCards" class="d-flex flex-wrap gap-4 justify-content-center pt-4 pb-4 border-black">
-   <!--      <article class="card" style="width: 25rem">
-          <img
-            src="./images/cine7.jpg"
-            class="card-img-top p-2"
-            alt="Cinema"
-            height="60%"
-          />
-          <h5 class="card-title text-center">Cinema</h5>
-          <p class="card-text text-center">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <div class="d-flex justify-content-evenly">
-            <p>Precio US$</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </article>
-        <article class="card" style="width: 25rem">
-          <img
-            src="./images/fiestadedisfraces1.jpg"
-            class="card-img-top p-2"
-            alt="Party"
-            height="60%"
-          />
-          <h5 class="card-title text-center">Party</h5>
-          <p class="card-text text-center">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <div class="d-flex justify-content-evenly">
-            <p>Precio US$</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </article>
-        <article class="card" style="width: 25rem">
-          <img
-            src="./images/salidaalmuseo5.jpg"
-            class="card-img-top p-2"
-            alt="Museum"
-            height="60%"
-          />
-          <h5 class="card-title text-center">Cinema</h5>
-          <p class="card-text text-center">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content..
-          </p>
-          <div class="d-flex justify-content-evenly">
-            <p>Precio US$</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </article>
-        <article class="card" style="width: 25rem">
-          <img
-            src="./images/feriadecomidas7.jpg"
-            class="card-img-top p-2"
-            alt="Footer"
-            height="60%"
-          />
-          <h5 class="card-title text-center">Food fair</h5>
-          <p class="card-text text-center">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content..
-          </p>
-          <div class="d-flex justify-content-evenly">
-            <p>Precio US$</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </article>
-        <article class="card" style="width: 25rem">
-          <img
-            src="./images/conciertodemusica1.jpg"
-            class="card-img-top p-2"
-            alt="Music"
-            height="60%"
-          />
-          <h5 class="card-title text-center">Music concert</h5>
-          <p class="card-text text-center">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content..
-          </p>
-          <div class="d-flex justify-content-evenly">
-            <p>Precio US$</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </article>
-        <article class="card" style="width: 25rem">
-          <img
-            src="./images/maraton3.jpg"
-            class="card-img-top p-2"
-            alt="Marathon"
-            height="60%"
-          />
-          <h5 class="card-title text-center">Marathon</h5>
-          <p class="card-text text-center">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content..
-          </p>
-          <div class="d-flex justify-content-evenly">
-            <p>Precio US$</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </article> -->
       </div>
     </main>
     <footer class="bg-black p-1" style="min-height: 10vh">
@@ -268,12 +143,15 @@
       </div>
     </footer>
 
+    
     <script src="./scripts/data.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/details.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-      crossorigin="anonymous"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"
     ></script>
   </body>
 </html>
+
