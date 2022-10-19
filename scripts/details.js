@@ -10,7 +10,7 @@ let eventDetail = data.events.filter(object =>
 let evento = eventDetail[0]
 detailView.innerHTML =
 `
-<article class="d-flex flex-column container-fluid mt-5 mb-5 bg-indigo shadow p-3 bg-indigo p-2 text-dark bg-opacity-10" style="width: 35%;">
+<article class="d-flex flex-column container-fluid mt-5 mb-5 shadow p-3 p-2 text-dark" style="width: 35%;">
 <h5 class="text-center text-warning bg-dark fst-italic">${evento.name}</h5>
 <img
   src= "${evento.image}",
