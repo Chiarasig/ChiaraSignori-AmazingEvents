@@ -100,24 +100,7 @@
       </button>
     </div>
     <main style="min-height: 80vh" >
-      <article class="d-flex flex-column container-fluid mt-5 mb-5 bg-indigo shadow p-3 bg-indigo p-2 text-dark bg-opacity-10" style="width: 35%;">
-        <h5 class="text-center text-warning bg-dark fst-italic">Collectivities Party</h5>
-        <img
-          src= "https://amazingeventsapi.herokuapp.com/api/img/Feriadecomidas7.jpg",
-          alt=${evento.name}
-        />
-        <p class="text-center pt-3 fst-italic">Enjoy your favourite dishes, from different countries, in a unique event for the whole family</p>
-        <div class="d-flex justify-content-evenly flex-wrap font-monospace">
-          <p>Category: Food Fair</p>
-          <p>Date: 2021-12-12</p>
-          <p>Price: 5</p>
-        </div>
-        <div class="d-flex justify-content-evenly flex-wrap font-monospace">
-          <p>Capacity: 45000</p>
-          <p>Assistance: 42756</p>
-          <p>Place: Room A</p>
-        </div>
-      </article>
+      <div id="viewDetail"></div>
     </main>
     <footer class="bg-black p-1" style="min-height: 10vh">
       <div class="d-flex justify-content-between">
@@ -145,6 +128,8 @@
       </div>
     </footer>
 
+    <script src="../scripts/data.js"></script>
+    <script src="../scripts/details.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
