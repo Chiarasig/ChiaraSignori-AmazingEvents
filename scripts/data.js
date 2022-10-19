@@ -1,5 +1,5 @@
   let data = {
-    "ocurrentevents" : "2022-01-01",
+    "currentevents" : "2022-01-01",
     "events" :
   [
     {
