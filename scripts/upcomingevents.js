@@ -16,7 +16,7 @@ function printCard (array, container){
             <p class="card-text text-center">${evento.description}</p>
             <div class="d-flex justify-content-evenly">
               <p>Precio US$ ${evento.price}</p>
-              <a href="../pages/details.html?id=${evento._id}" class="btn btn-primary">Go somewhere</a>
+              <a href="../pages/details.html?id=${evento._id}" class="btn btn-primary">Details</a>
             </div>
           </article>
           `
