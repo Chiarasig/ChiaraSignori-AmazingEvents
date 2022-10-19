@@ -11,7 +11,7 @@ let evento = eventDetail[0]
 detailView.innerHTML =
 `
 <article class="d-flex flex-column container-fluid mt-5 mb-5 shadow p-3 p-2 text-dark" style="width: 35%;">
-<h5 class="text-center text-warning bg-dark fst-italic">${evento.name}</h5>
+<h5 class="text-center text-warning bg-dark fst-italic"> ${evento.name} </h5>
 <img
   src= "${evento.image}",
   alt=${evento.name}
