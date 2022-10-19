@@ -38,7 +38,6 @@ checkbox.forEach((nombreCategoria) => {
         <label class="form-check-label" for="${nombreCategoria}">${nombreCategoria}</label>
     </div>
     `;
-  console.log(checkbox);
 });
 
 let listCheck = [];
