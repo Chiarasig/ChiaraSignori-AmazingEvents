@@ -1,4 +1,4 @@
-let eventId=new URL(window.location.href).searchParams.get('id') //query param, para tomar del lado del detail, se toma la url 
+/* let eventId=new URL(window.location.href).searchParams.get('id') //query param, para tomar del lado del detail, se toma la url 
 //window location y lo convertimos a una url para que sea interpretada por js y con "searchParam" obtiene todo los parametros
 //que traiga despues del signo de interrogación (son parametros)
 let detailView = document.getElementById('viewDetail')
@@ -28,4 +28,4 @@ detailView.innerHTML =
   <p>Place: ${evento.place}</p>
 </div>
 </article>
-          `;
+          `; */

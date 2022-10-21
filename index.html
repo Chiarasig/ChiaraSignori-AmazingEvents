@@ -104,18 +104,21 @@
       </button>
     </div>
     <main style="min-height: 80vh">
-      <div class="d-flex justify-content-center flex-wrap">
-        <div class="ps-5 pt-3 d-flex gap-3 flex-wrap" id="boxes"></div>
-        <form class="d-flex flex-wrap">
+       <div class="d-inline-flex flex-wrap">
+        <div class="ps-5 ms-5 justify-content-center pt-3 d-flex gap-3 flex-wrap" >
+          <form id="checkBoxes"></form>
+        </div>
+        <form class="d-inline-flex flex-wrap">
           <input id="inputSearch"
-            class="mt-2 ms-5 form-control "
+            class="mt-2 ms-5 form-control"
+            style="width: 80%;"
             type="search"
             aria-label="Search"
           />
         </form>
       </div>
-      <div id="containerCards" class="d-flex flex-wrap gap-4 justify-content-center pt-4 pb-4 border-black">
-      </div>
+     <div id="containerCards" class="d-flex flex-wrap gap-4 justify-content-center pt-4 pb-4 border-black">
+    </div>
     </main>
     <footer class="bg-black p-1" style="min-height: 10vh">
       <div class="d-flex justify-content-between">
@@ -143,8 +146,6 @@
       </div>
     </footer>
 
-    
-    <script src="./scripts/data.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/details.js"></script>
     <script

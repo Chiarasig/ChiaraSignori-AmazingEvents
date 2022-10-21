@@ -1,31 +1,4 @@
-
-let containerCards = document.getElementById("containerCards")
-function printCard (array, container){
-  array.forEach(evento =>{
-    if (evento.date > data.currentevents)
-    container.innerHTML += 
-    `
-    <article class="card" style="width: 25rem">
-            <img
-              src=${evento.image}
-              class="card-img-top p-2"
-              alt=${evento.name}
-              height="60%"
-            />
-            <h5 class="card-title text-center">${evento.name}</h5>
-            <p class="card-text text-center">${evento.description}</p>
-            <div class="d-flex justify-content-evenly">
-              <p>Precio US$ ${evento.price}</p>
-              <a href="../pages/details.html?id=${evento._id}" class="btn btn-danger">Details</a>
-            </div>
-          </article>
-          `
-    
-  })
-}
-printCard (data.events, containerCards)
-
-//codigo checkbox
+/* //codigo checkbox
 
 let categorias = document.getElementById("boxes");
 
@@ -84,3 +57,39 @@ search.addEventListener("keyup", (cambiosDelEvento) => {
   containerCards.innerHTML = "";
   printCard(filtro, containerCards);
 });
+ */
+let containerCards = document.getElementById("containerCards");
+
+function printCard(array, container) {
+  array.forEach((evento) => {
+    container.innerHTML += `
+    <article class="card" style="width: 25rem">
+            <img
+              src=${evento.image}
+              class="card-img-top p-2"
+              alt=${evento.name}
+              height="60%"
+            />
+            <h5 class="card-title text-center">${evento.name}</h5>
+            <p class="card-text text-center">${evento.description}</p>
+            <div class="d-flex justify-content-evenly">
+              <p>Precio US$ ${evento.price}</p>
+              <a href="../pages/details.html?id=${evento._id}" class="btn btn-danger">Details</a>
+            </div>
+          </article>
+          `;
+  });
+}
+async function getData() {
+  try {
+    let answer = await fetch ("https://mind-hub.up.railway.app/amazing?time=upcoming&order=desc")
+    let transformData = await answer.json()
+    console.log(transformData);
+    console.log(answer);
+    let events = transformData.events
+    printCard (events, containerCards)
+  } catch (error) {
+    console.log(error);
+  }
+}
+console.log(getData());
