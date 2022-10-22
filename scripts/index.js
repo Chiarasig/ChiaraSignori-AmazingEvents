@@ -1,4 +1,5 @@
 let containerCards = document.getElementById("containerCards")
+let checkbox = document.getElementById("checkBoxes")
 
 
 /* //entrada texto input
@@ -29,12 +30,17 @@ search.addEventListener("keyup", (cambiosDelEvento) => {
      printCards(events)
      let categories = new Set(events.map(element => element.category))
      categories = [...categories]
-     printCategories(events,categories,'checkBoxes')
-     inputSearch.addEventListener("keyup", function (event){
+     printCategories(events,categories)
+     inputSearch.addEventListener("input", function (event){
        const searchString = event.target.value.toLowerCase()
        const filteredCharacters = events.filter((character) => {
         return (character.name.toLowerCase().includes(searchString))
-       })
+       }); if (filteredCharacters.length === 0){
+        containerCards.innerHTML = `
+        <h1>We did not get results in your search, please try again</h1>
+        `
+        return []
+    }
        printCards(filteredCharacters)
     })
     } catch(error) {
@@ -66,10 +72,10 @@ search.addEventListener("keyup", (cambiosDelEvento) => {
   })
 }
 
-function printCategories (arrayEvents,arrayCat,id) {
-  document.querySelector(`#${id}`).innerHTML = ""
+function printCategories (arrayEvents,arrayCat) {
+  checkbox.innerHTML = ""
   arrayCat.forEach(cat =>{
-    document.querySelector(`#${id}`).innerHTML +=
+  checkbox.innerHTML +=
     `      
     <label class="d-inline-flex  p-1" for="${cat.toLowerCase()}">
     <input class=" m-1 checkbox" type="checkbox" id="${cat.toLowerCase()}" name="letter" value="${cat.toLowerCase()}">${cat}
@@ -93,23 +99,7 @@ function search(array) {
   if (filterArray.length===0) { 
     filterArray = array
   }
-  printCards(filterArray,'containerCards')
+  printCards(filterArray)
 }
 
-//función filtro search
-/* let search = document.getElementById("inputSearch");
-search.addEventListener("keyup", (cambiosDelEvento) => {
-  let inputUser = cambiosDelEvento.target.value;
-  let filtro = [];
-  if (listCheck.length !== 0) {
-    filtro = listCheck.filter((objetoEvento) =>
-    objetoEvento.name.toLowerCase().includes(inputUser.toLowerCase())
-    );
-  }else{
-    filtro = events.filter((objetoEvento) =>
-    objetoEvento.name.toLowerCase().includes(inputUser.toLowerCase())
-    )}
-    containerCards.innerHTML = "";
-    printCard(filtro, containerCards);
-  }); */
-  
+//filtros cruzados
