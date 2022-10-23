@@ -1,95 +1,74 @@
-/* //codigo checkbox
+const containerCards = document.getElementById("containerCards")
+const checkbox = document.getElementById ("checkBoxes")
+const inputSearch = document.getElementById("inputSearch")
+let events;
+fetch("https://mind-hub.up.railway.app/amazing?time=upcoming")
+  .then(data => data.json())
+  .then(res => {
+    events = res.events
+    createdCheckbox(events,checkbox)
+    printCards(events, containerCards)
+    inputSearch.addEventListener("keyup", filtering)
+    checkbox.addEventListener("change", filtering)
+  })
+  .catch(error => console.log(error))
+ 
 
-let categorias = document.getElementById("boxes");
+  //funciones
 
-let checkbox = new Set(data.events.map((evento) => evento.category));
 
-checkbox = [...checkbox];
-
-checkbox.forEach((nombreCategoria) => {
-  categorias.innerHTML += `
-    <div class="form-check">
-        <input class="form-check-input" id="${nombreCategoria}" type="checkbox">
-        <label class="form-check-label">${nombreCategoria}</label>
-    </div>
-    `;
-  console.log(checkbox);
-});
-
-let listCheck = [];
-
-categorias.addEventListener(`click`, (e) => {
-  if (e.target.checked) {
-    listCheck = listCheck.concat(
-      data.events.filter((evento) =>
-        evento.category.toLowerCase().includes(e.target.id.toLowerCase())
-      )
-    );
-    containerCards.innerHTML = "";
-    printCard(listCheck, containerCards);
-  } else if (!e.target.checked) {
-    listCheck = listCheck.filter(
-      (evento) =>
-        !evento.category.toLowerCase().includes(e.target.id.toLowerCase())
-    );
-    containerCards.innerHTML = "";
-    printCard(listCheck, containerCards);
+  //función para crear checkbox
+  function createdCheckbox (events, container){
+    let fn = events => events.category
+    let eventsCheck = new Set (events.filter( fn ).map( fn ))
+    eventsCheck.forEach( category =>{
+      container.innerHTML += `
+      <label class="d-inline-flex  p-1" for="${category}">
+          <input class=" m-1 checkbox" type="checkbox" id="${category}" name="letter" value="${category}"> ${category}
+      </label>
+      `
+    })
   }
-  if (listCheck.length === 0) {
-    printCard(data.events, containerCards);
-  }
-});
 
-//entrada texto input
-
-let search = document.getElementById("inputSearch");
-search.addEventListener("keyup", (cambiosDelEvento) => {
-  let inputUser = cambiosDelEvento.target.value;
-  let filtro = [];
-  if (listCheck.length !== 0) {
-    filtro = listCheck.filter((objetoEvento) =>
-      objetoEvento.name.toLowerCase().includes(inputUser.toLowerCase())
-    );
-  }else{
-    filtro = data.events.filter((objetoEvento) =>
-    objetoEvento.name.toLowerCase().includes(inputUser.toLowerCase())
-  )}
-  containerCards.innerHTML = "";
-  printCard(filtro, containerCards);
-});
- */
-let containerCards = document.getElementById("containerCards");
-
-function printCard(array, container) {
-  array.forEach((evento) => {
-    container.innerHTML += `
-    <article class="card" style="width: 25rem">
-            <img
-              src=${evento.image}
-              class="card-img-top p-2"
-              alt=${evento.name}
-              height="60%"
-            />
-            <h5 class="card-title text-center">${evento.name}</h5>
-            <p class="card-text text-center">${evento.description}</p>
-            <div class="d-flex justify-content-evenly">
-              <p>Precio US$ ${evento.price}</p>
-              <a href="../pages/details.html?id=${evento._id}" class="btn btn-danger">Details</a>
-            </div>
-          </article>
-          `;
-  });
+  //función para crear cards
+function createdCards (events){
+  let card = document.createElement("article")
+  card.classname = "card" 
+  card.style = "width: 25rem"
+  card.innerHTML = `
+  <img
+  src=${events.image}
+  class="card-img-top p-2"
+  alt="Picture of ${events.name}"
+  height="60%"
+  />
+  <h5 class="card-title text-center">${events.name}</h5>
+  <p class="card-text text-center">${events.description}</p>
+  <div class="d-flex justify-content-evenly">
+  <p>Precio US$ ${events.price}</p>
+  <a href="../pages/details.html?id=${events.id}" class="btn btn-danger">Details</a>
+  </div>
+  `
+  return card
 }
-async function getData() {
-  try {
-    let answer = await fetch ("https://mind-hub.up.railway.app/amazing?time=upcoming&order=desc")
-    let transformData = await answer.json()
-    console.log(transformData);
-    console.log(answer);
-    let events = transformData.events
-    printCard (events, containerCards)
-  } catch (error) {
-    console.log(error);
+
+//función para imprimir las cards
+function printCards (events, container){
+  container.innerHTML = " "
+  let fragment = document.createDocumentFragment()
+  events.forEach(events => fragment.appendChild (createdCards(events)))
+  container.appendChild(fragment)
+  if (events.length === 0){
+    containerCards.innerHTML = `
+    <h1>We did not get results in your search, please try again</h1>
+    `
+}}
+
+  //función para filtrar
+  function filtering (){
+    let checked = [...document.querySelectorAll('.checkbox:checked')].map(element => element.value)
+    let filterCheckbox = events.filter (event => checked.includes (event.category) || checked.length === 0)
+    let filterSearch = filterCheckbox.filter(event => event.name.toLowerCase().includes(inputSearch.value.toLowerCase()))
+    printCards(filterSearch, containerCards)
   }
-}
-console.log(getData());
+  

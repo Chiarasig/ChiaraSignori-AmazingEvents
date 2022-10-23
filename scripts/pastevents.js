@@ -1,85 +1,74 @@
-//entrada texto input
-
-/* let search = document.getElementById("inputSearch");
-search.addEventListener("keyup", (cambiosDelEvento) => {
-  let inputUser = cambiosDelEvento.target.value;
-  let filtro = [];
-  if (listCheck.length !== 0) {
-    filtro = listCheck.filter((objetoEvento) =>
-      objetoEvento.name.toLowerCase().includes(inputUser.toLowerCase())
-    );
-  }else{
-    filtro = data.events.filter((objetoEvento) =>
-    objetoEvento.name.toLowerCase().includes(inputUser.toLowerCase())
-  )}
-  containerCards.innerHTML = "";
-  printCard(filtro, containerCards);
-}); */
+const containerCards = document.getElementById("containerCards")
+const checkbox = document.getElementById ("checkBoxes")
+const inputSearch = document.getElementById("inputSearch")
+let events;
+fetch("https://mind-hub.up.railway.app/amazing?time=past")
+  .then(data => data.json())
+  .then(res => {
+    events = res.events
+    createdCheckbox(events,checkbox)
+    printCards(events, containerCards)
+    inputSearch.addEventListener("keyup", filtering)
+    checkbox.addEventListener("change", filtering)
+  })
+  .catch(error => console.log(error))
  
-//función para traer la información desde un servidor
-async function getData() {
-  try {
-    let answer = await fetch ("https://mind-hub.up.railway.app/amazing?time=past&order=desc")
-    let transformData = await answer.json()
-    let events = transformData.events
-    printCard (events, containerCards)
-    let categories = new Set(events.map(element => element.category))
-    categories = [...categories]
-    printCategories (events, categories, checks)
-  } catch (error) {
-    console.log(error);
-  }
-}
-console.log(getData());
 
-//función para los checkbox e imprimir categorias
-function printCategories (arrayEvents, arrayCategories, idHTML){
-  document.querySelector(`#${id}`).innerHTML = ""
-  arrayCategories.forEach(category =>{
-    document.querySelector(`#${id}`).innerHTML += 
-    `
-    <label class="d-flex align-items-center p-1" for="${category.toLowerCase()}">
-                <input class="d-flex align-items-center m-1 checkbox" type="checkbox" id="${category.toLowerCase()}" name="letter" value="${category.toLowerCase()}">${category}
-    </label>
-    `
-  })
-  let checks = document.querySelectorAll(".checkbox")
-  checks.forEach(cadaCheck => {
-    cadaCheck.addEventListener("click", () => search (arrayEvents)) 
-  })
-}
-//función para buscar esos checkbox clickeados que coinciden con las cards
-function search (array) {
-  let checks = document.querySelectorAll ("checkbox:checked")
-  let filterArray = []
-  checks.forEach(cadaCategoria => {
-    let newArray = array.filter(cadaEvento => cadaEvento.category.toLowerCase() === cadaCategoria.value)
-    filterArray = filterArray.concat(newArray)
-  })
-  if (filterArray.length === 0){
-    filterArray = array
+  //funciones
+
+
+  //función para crear checkbox
+  function createdCheckbox (events, container){
+    let fn = events => events.category
+    let eventsCheck = new Set (events.filter( fn ).map( fn ))
+    eventsCheck.forEach( category =>{
+      container.innerHTML += `
+      <label class="d-inline-flex  p-1" for="${category}">
+          <input class=" m-1 checkbox" type="checkbox" id="${category}" name="letter" value="${category}"> ${category}
+      </label>
+      `
+    })
   }
-  printCard (filterArray, containerCards)
+
+  //función para crear cards
+function createdCards (events){
+  let card = document.createElement("article")
+  card.classname = "card" 
+  card.style = "width: 25rem"
+  card.innerHTML = `
+  <img
+  src=${events.image}
+  class="card-img-top p-2"
+  alt="Picture of ${events.name}"
+  height="60%"
+  />
+  <h5 class="card-title text-center">${events.name}</h5>
+  <p class="card-text text-center">${events.description}</p>
+  <div class="d-flex justify-content-evenly">
+  <p>Precio US$ ${events.price}</p>
+  <a href="../pages/details.html?id=${events.id}" class="btn btn-danger">Details</a>
+  </div>
+  `
+  return card
 }
 
 //función para imprimir las cards
-function printCard(array, container) {
-  array.forEach((evento) => {
-    container.innerHTML += `
-    <article class="card" style="width: 25rem">
-            <img
-              src=${evento.image}
-              class="card-img-top p-2"
-              alt=${evento.name}
-              height="60%"
-            />
-            <h5 class="card-title text-center">${evento.name}</h5>
-            <p class="card-text text-center">${evento.description}</p>
-            <div class="d-flex justify-content-evenly">
-              <p>Precio US$ ${evento.price}</p>
-              <a href="../pages/details.html?id=${evento._id}" class="btn btn-danger">Details</a>
-            </div>
-          </article>
-          `;
-  });
-}
+function printCards (events, container){
+  container.innerHTML = " "
+  let fragment = document.createDocumentFragment()
+  events.forEach(events => fragment.appendChild (createdCards(events)))
+  container.appendChild(fragment)
+  if (events.length === 0){
+    containerCards.innerHTML = `
+    <h1>We did not get results in your search, please try again</h1>
+    `
+}}
+
+  //función para filtrar
+  function filtering (){
+    let checked = [...document.querySelectorAll('.checkbox:checked')].map(element => element.value)
+    let filterCheckbox = events.filter (event => checked.includes (event.category) || checked.length === 0)
+    let filterSearch = filterCheckbox.filter(event => event.name.toLowerCase().includes(inputSearch.value.toLowerCase()))
+    printCards(filterSearch, containerCards)
+  }
+  
