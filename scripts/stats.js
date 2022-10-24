@@ -71,7 +71,8 @@ const table2and3 = async (time, property, container) => {
 table2and3("past", "assistance", tableNumber3)
 table2and3("upcoming", "estimate", tableNumber2)
 
-const reduceStats = (array, property) => {
+//función de reduce (acumuladora), le damos el valor incial y luego lo reemplazamos dinámicamente, también varía la propiedad según sea past o upcoming
+let reduceStats = (array, property) => {
   let initialTable = {
     category: "",
     gain: 0,

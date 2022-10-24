@@ -34,7 +34,7 @@ fetch("https://mind-hub.up.railway.app/amazing?time=past")
 function createdCards (events){
   let card = document.createElement("article")
   card.classname = "card" 
-  card.style = "width: 25rem"
+  card.style = "width: 25rem; border-style: groove; border-width: 3px; border-radius: 7px;"
   card.innerHTML = `
   <img
   src=${events.image}

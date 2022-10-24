@@ -26,7 +26,7 @@ function printDetails(events, container) {
     <p class="text-center pt-3 fst-italic">${events.description}</p>
     <div class="d-flex justify-content-evenly flex-wrap font-monospace">
       <p>Category: ${events.category}</p>
-      <p>Date: ${events.date}</p>
+      <p>Date: ${(new Date(events.date)).getDate()}/${(new Date(events.date)).getMonth()}/${(new Date(events.date)).getFullYear()}</p>
       <p>Price: ${events.price}</p>
     </div>
     <div class="d-flex justify-content-evenly flex-wrap font-monospace">

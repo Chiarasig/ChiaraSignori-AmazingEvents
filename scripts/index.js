@@ -33,8 +33,8 @@ fetch("https://mind-hub.up.railway.app/amazing")
   //función para crear cards
 function createdCards (events){
   let card = document.createElement("article")
-  card.classname = "card border-black" 
-  card.style = "width: 25rem"
+  card.classname = "card" 
+  card.style = "width: 25rem; border-style: groove; border-width: 3px; border-radius: 7px;"
   card.innerHTML = `
   <img src=${events.image} class="card-img-top p-2" alt="Picture of ${events.name}" height="60%" />
   <h5 class="card-title text-center">${events.name}</h5>
