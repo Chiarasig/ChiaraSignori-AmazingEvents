@@ -30,9 +30,9 @@ function printDetails(events, container) {
       <p>Price: ${events.price}</p>
     </div>
     <div class="d-flex justify-content-evenly flex-wrap font-monospace">
-      <p>Capacity: ${events.capacity}</p>
-      <p>${array[0]}: ${array[1]}</p>
-      <p>Place: ${events.place}</p>
+      <p>Capacity: ${events.capacity} </p>
+      <p>${array[0]}: ${array[1]} </p>
+      <p>Place: ${events.place }</p>
     </div>
   </article>
   `;
