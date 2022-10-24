@@ -10,8 +10,8 @@ const printTable1 = (minPercentAssistance, maxPercentAssistance, maxCapacity, co
         <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${maxCapacity.name}</td>
     </tr>
     <tr>
-        <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${minPercentAssistance.percent}</td>
-        <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${maxPercentAssistance.percent}</td>
+        <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${minPercentAssistance.percent}%</td>
+        <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${maxPercentAssistance.percent}%</td>
         <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${maxCapacity.percent}</td>   
     </tr>
     
@@ -23,7 +23,7 @@ const printTable2and3 = (array, container) => {
     container.innerHTML += `
     <tr>
         <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${element.category}</td>
-        <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">${element.gain}</td>
+        <td scope="col" class="col-3 justify-content-center align-items-center text-center fw-normal">US$ ${element.gain}</td>
         <td scope="col" class="col-3stify-content-center align-items-center text-center fw-normal">${element.prom}%</td>   
     </tr>
         `;

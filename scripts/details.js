@@ -16,7 +16,6 @@ function printDetails(events, container) {
   } else {
     array = ["Estimate", events.estimate];
   }
-  console.log(array);
   container.innerHTML = `
   <article class="d-flex flex-column container-fluid mt-5 mb-5 shadow p-3 p-2 text-dark" style="width: 35%;">
     <h5 class="text-center text-warning bg-dark fst-italic"> ${events.name} </h5>
